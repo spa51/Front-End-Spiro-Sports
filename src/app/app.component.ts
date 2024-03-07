@@ -1,15 +1,18 @@
+
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import * as  Leaflet from 'leaflet';
-import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { NavBarComponent } from "./components/nav-bar/nav-bar.component";
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms'
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, LeafletModule],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+    selector: 'app-root',
+    standalone: true,
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css',
+    imports: [RouterOutlet, NavBarComponent, HttpClientModule, ReactiveFormsModule]
 })
 export class AppComponent {
-  title = 'Front-End';
+
 }
+

@@ -1,0 +1,33 @@
+<div class="title">
+    <h4>Listado de Productos</h4>
+    <button type="button" class="btn btn-primary" routerLink="/edit">Agregar Producto</button>
+</div>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Direciòn</th>
+        <th scope="col">Categotia</th>
+        <th scope="col">Latitud</th>
+        <th scope="col">Longitud</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of listLocations">
+        <th>{{item.id}}</th>
+        <th>{{item.name}}</th>
+        <td>{{item.description}}</td>
+        <td>{{item.address}}</td>
+        <td>{{item.category}}</td>
+        <td>{{item.latitude}}</td>
+        <td>{{item.longitude}}</td>
+        <td>
+            <button routerLink="/edit/{{ item.id }}" type="button" class="btn btn-info btn-sm">Edit</button>
+            <button  type="button" class="btn btn-secondary btn-sm ms-2">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

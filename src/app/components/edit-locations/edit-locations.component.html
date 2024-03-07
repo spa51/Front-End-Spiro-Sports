@@ -1,0 +1,47 @@
+<div class="row mt-1">
+    <div class="col-lg-4 offset-lg-4">
+        <div class="card text-white bg-secondary mb-3" style="max-width: 25rem;">
+            <h5 class="card-header text-center ">Agregar Localizacion</h5>
+            <div class="card-body ">
+                <form [formGroup]="formLocations" (ngSubmit)="editLocation()">
+                    <input formControlName="name" type="text" class="form-control" placeholder="Ingrese Nombre">
+                    <span *ngIf="formLocations.get('name')?.hasError('required') && formLocations.get('name')?.touched ">
+                        El campo Nombre es <strong>requerido</strong>
+                    </span>
+                    <input formControlName="description" type="text" class="form-control mt-2" placeholder="Ingrese Descripcion">
+                    <span *ngIf="formLocations.get('description')?.hasError('required') && formLocations.get('description')?.touched">
+                        El campo Descripcion es <strong>requerido</strong>
+                    </span>
+                    <input formControlName="category" type="text" class="form-control mt-2" placeholder="Ingrese Categoria">
+                    <span *ngIf="formLocations.get('category')?.hasError('required') && formLocations.get('category')?.touched">
+                        El campo Categoria es <strong>requerido</strong>
+                    </span>
+                    <input formControlName="address" type="text" class="form-control mt-2" placeholder="Ingrese Direccion">
+                    <span *ngIf="formLocations.get('address')?.hasError('required') && formLocations.get('address')?.touched">
+                        El campo Nombre es <strong>requerido</strong>
+                    </span>
+                    <input formControlName="latitude" type="number" class="form-control mt-2" placeholder="Ingrese Cordenadas 1">
+                    <span *ngIf="formLocations.get('latitude')?.hasError('required') && formLocations.get('latitude')?.touched">
+                        El campo Direccion 1 es <strong>requerido</strong>
+                    </span>
+                    <input formControlName="longitude" type="number" class="form-control mt-2" placeholder="Ingrese Cordenadas 2">
+                    <span *ngIf="formLocations.get('longitude')?.hasError('required') && formLocations.get('longitude')?.touched">
+                        El campo Cordenadas 2 es <strong>requerido</strong>
+                    </span>
+                    <div class="row mt-2 text-center">
+                        <div class="col-lg-6">
+                            <button [disabled]="formLocations.invalid" type="submit" class="btn btn-primary">Aceptar</button>
+                        </div>
+                        <div class="col-lg-6">
+                            <button routerLink="/" type="button" class="btn btn-secondary">Cancelar</button>
+                        </div>
+                    </div>
+                    
+
+                </form>
+            </div>
+          </div>
+    </div>
+</div>
+
+
