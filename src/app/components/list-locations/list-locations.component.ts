@@ -2,6 +2,7 @@ import { NgFor, NgIf } from '@angular/common';
 import { Component, OnInit} from '@angular/core';
 import { Location } from '../../interfaces/location';
 import { RouterLink } from '@angular/router';
+import { LocationService } from '../../services/location.service';
 
 @Component({
   selector: 'app-list-locations',
@@ -12,13 +13,20 @@ import { RouterLink } from '@angular/router';
 })
 export class ListLocationsComponent implements OnInit{
 
-  listLocations: Location[] =[
-    {id: 1, name: 'msadsa', description: 'jjjjk', address: '122', category: 2, latitude:12, longitude:10},
-    {id: 2, name: 'msadsa', description: 'jjjjk', address: '122', category: 2, latitude:12, longitude:1}
-  ]
+  listLocations: Location[] =[]
+
+  constructor(private _locationService: LocationService){
+
+  }
 
   ngOnInit(): void {
-    
+    this.getListLocations();
+  }
+
+  getListLocations(){
+    this._locationService.getListLocations().subscribe((data) => {
+      this.listLocations = data;
+    })
   }
 
 }

@@ -14,7 +14,7 @@ export class LocationService {
 
   constructor(private http: HttpClient) { 
     this.myAppUrl = environment.endpoint
-    this.myApiUrl = 'api/locations/'
+    this.myApiUrl = '/api/locations/'
   }
 
   getListLocations(): Observable<Location[]>{
