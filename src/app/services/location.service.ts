@@ -20,4 +20,8 @@ export class LocationService {
   getListLocations(): Observable<Location[]>{
     return this.http.get<Location[]>(`${this.myAppUrl}${this.myApiUrl}`);
   }
+
+  deleteLocation(id: number): Observable<void>{
+    return this.http.delete<void>(`${this.myAppUrl}${this.myApiUrl}${id}`)
+  }
 }
