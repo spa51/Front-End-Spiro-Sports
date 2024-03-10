@@ -1,8 +1,11 @@
+import { Location } from './../../interfaces/location';
+import { getLocation } from './../../../../../Back-End/src/controllers/location';
 import { NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
-import { Location } from '../../interfaces/location';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { LocationService } from '../../services/location.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-locations',
@@ -14,8 +17,14 @@ import { Location } from '../../interfaces/location';
 export class EditLocationsComponent implements OnInit {
 
   formLocations: FormGroup;
+  id: number;
+  operacion: string = 'Agregar';
 
-  constructor(private fb: FormBuilder){
+  constructor(private fb: FormBuilder, 
+    private _locationService: LocationService,
+    private router:Router,
+    private toastr: ToastrService,
+    private aRouter: ActivatedRoute){
     this.formLocations = this.fb.group({
       name: ['', Validators.required],
       description: ['',Validators.required],
@@ -24,10 +33,31 @@ export class EditLocationsComponent implements OnInit {
       latitude: [null,Validators.required],
       longitude: [null,Validators.required],
   })
+    this.id =Number(aRouter.snapshot.paramMap.get('id'));
 
   }
   ngOnInit(): void {
+
+    if (this.id != 0) {
+      // Es editar
+      this.operacion = 'Editar';
+      this.getLocation(this.id);
+    }
     
+  }
+
+  getLocation(id: number){
+    this._locationService.getLocation(id).subscribe((data:Location) =>{
+      // console.log(data)
+      this.formLocations.setValue({
+        name: data.name,
+        description: data.description,
+        address: data.address,
+        category: data.category,
+        latitude: data.latitude,
+        longitude: data.longitude,
+      })
+    })
   }
 
   editLocation(){
@@ -40,6 +70,23 @@ export class EditLocationsComponent implements OnInit {
       longitude: this.formLocations.value.longitude,
       
     }
-    console.log(location)
+    if (this.id != 0) {
+      //editar
+      
+      location.id = this.id;
+      this._locationService.updateLocation(this.id,location).subscribe(()=>{
+        // console.log('Localizacion Agregada')
+        this.toastr.info(`La localizacion ${location.name} fue actualizada`,'Actualizada!')
+        this.router.navigate(['/lists'])
+      })
+    }else{
+      //Añadir
+      this._locationService.saveLocation(location).subscribe(()=>{
+        // console.log('Localizacion Agregada')
+        this.toastr.success(`La localizacion ${location.name} fue agregada`,'Guardado!')
+        this.router.navigate(['/lists'])
+      })
+    }
+
   }
 }

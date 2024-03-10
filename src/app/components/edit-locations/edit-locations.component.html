@@ -1,7 +1,7 @@
 <div class="row mt-1">
     <div class="col-lg-4 offset-lg-4">
         <div class="card text-white bg-secondary mb-3" style="max-width: 25rem;">
-            <h5 class="card-header text-center ">Agregar Localizacion</h5>
+            <h5 class="card-header text-center ">{{ operacion }} Localizacion</h5>
             <div class="card-body ">
                 <form [formGroup]="formLocations" (ngSubmit)="editLocation()">
                     <input formControlName="name" type="text" class="form-control" placeholder="Ingrese Nombre">
@@ -33,7 +33,7 @@
                             <button [disabled]="formLocations.invalid" type="submit" class="btn btn-primary">Aceptar</button>
                         </div>
                         <div class="col-lg-6">
-                            <button routerLink="/" type="button" class="btn btn-secondary">Cancelar</button>
+                            <button routerLink="/lists" type="button" class="btn btn-secondary">Cancelar</button>
                         </div>
                     </div>
                     
