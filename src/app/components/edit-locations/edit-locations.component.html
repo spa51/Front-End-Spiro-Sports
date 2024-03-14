@@ -6,28 +6,54 @@
                 <form [formGroup]="formLocations" (ngSubmit)="editLocation()">
                     <input formControlName="name" type="text" class="form-control" placeholder="Ingrese Nombre">
                     <span *ngIf="formLocations.get('name')?.hasError('required') && formLocations.get('name')?.touched ">
-                        El campo Nombre es <strong>requerido</strong>
+                        <strong>Requerido</strong>
                     </span>
                     <input formControlName="description" type="text" class="form-control mt-2" placeholder="Ingrese Descripcion">
                     <span *ngIf="formLocations.get('description')?.hasError('required') && formLocations.get('description')?.touched">
-                        El campo Descripcion es <strong>requerido</strong>
+                        <strong>Requerido</strong>
                     </span>
                     <input formControlName="category" type="text" class="form-control mt-2" placeholder="Ingrese Categoria">
                     <span *ngIf="formLocations.get('category')?.hasError('required') && formLocations.get('category')?.touched">
-                        El campo Categoria es <strong>requerido</strong>
+                        <strong>Requerido</strong>
                     </span>
                     <input formControlName="address" type="text" class="form-control mt-2" placeholder="Ingrese Direccion">
                     <span *ngIf="formLocations.get('address')?.hasError('required') && formLocations.get('address')?.touched">
-                        El campo Nombre es <strong>requerido</strong>
+                        <strong>Requerido</strong>
                     </span>
                     <input formControlName="latitude" type="number" class="form-control mt-2" placeholder="Ingrese Cordenadas 1">
                     <span *ngIf="formLocations.get('latitude')?.hasError('required') && formLocations.get('latitude')?.touched">
-                        El campo Direccion 1 es <strong>requerido</strong>
+                        <strong>Requerido</strong>
                     </span>
                     <input formControlName="longitude" type="number" class="form-control mt-2" placeholder="Ingrese Cordenadas 2">
                     <span *ngIf="formLocations.get('longitude')?.hasError('required') && formLocations.get('longitude')?.touched">
-                        El campo Cordenadas 2 es <strong>requerido</strong>
+                        <strong>Requerido</strong>
                     </span>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mapModal">
+                        <i class="fa fa-map"></i>
+                    </button>
+
+                    <div class="modal fade" id="mapModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title">Modal title</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div style="height: 300px;"
+                                    leaflet 
+                                    [leafletOptions]="selectorMap.options"
+                                    (leafletMapReady)="selectorMap.onMapReady($event)">
+                                </div>
+                            </div>                            
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-primary">Guardar</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
                     <div class="row mt-2 text-center">
                         <div class="col-lg-6">
                             <button [disabled]="formLocations.invalid" type="submit" class="btn btn-primary">Aceptar</button>
@@ -36,8 +62,6 @@
                             <button routerLink="/lists" type="button" class="btn btn-secondary">Cancelar</button>
                         </div>
                     </div>
-                    
-
                 </form>
             </div>
           </div>

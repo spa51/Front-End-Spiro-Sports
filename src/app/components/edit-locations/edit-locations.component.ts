@@ -6,15 +6,18 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { LocationService } from '../../services/location.service';
 import { ToastrService } from 'ngx-toastr';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import * as  Leaflet from 'leaflet';
 
 @Component({
-  selector: 'app-edit-locations',
-  standalone: true,
-  imports: [RouterLink, ReactiveFormsModule,NgIf],
-  templateUrl: './edit-locations.component.html',
-  styleUrl: './edit-locations.component.css'
+    selector: 'app-edit-locations',
+    standalone: true,
+    templateUrl: './edit-locations.component.html',
+    styleUrl: './edit-locations.component.css',
+    imports: [RouterLink, ReactiveFormsModule, NgIf,LeafletModule]
 })
 export class EditLocationsComponent implements OnInit {
+  selectorMap: SelectorMap = new SelectorMap();
 
   formLocations: FormGroup;
   id: number;
@@ -89,4 +92,40 @@ export class EditLocationsComponent implements OnInit {
     }
 
   }
+}
+
+export class SelectorMap{
+  title = 'SelectorMap';
+  map: Leaflet.Map | undefined;
+  marker: Leaflet.Marker | undefined;
+  options = {
+    layers: [
+      Leaflet.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '...' })
+    ],
+    zoom: 15,
+    center: Leaflet.latLng(6.247980096310698, -75.57650510205677)
+  };
+  
+
+  constructor(){}
+  onMapReady(map: Leaflet.Map) {
+    this.map = map;
+    this.map.on('click', this.onMapClick.bind(this));
+  }
+
+  onMapClick(event: Leaflet.LeafletMouseEvent) {
+    const lat = event.latlng.lat;
+    const lng = event.latlng.lng;
+    console.log('Coordenadas:', lat, lng);
+
+    // Agregar un marcador en la posición donde se hizo click
+    if (this.map) {
+      if (this.marker) {
+        this.map.removeLayer(this.marker);
+      }
+      this.marker = Leaflet.marker([lat, lng]).addTo(this.map);
+    }
+  }
+
+  
 }
