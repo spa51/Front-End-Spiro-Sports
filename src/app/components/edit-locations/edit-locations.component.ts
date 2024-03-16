@@ -17,11 +17,20 @@ import * as  Leaflet from 'leaflet';
     imports: [RouterLink, ReactiveFormsModule, NgIf,LeafletModule]
 })
 export class EditLocationsComponent implements OnInit {
-  selectorMap: SelectorMap = new SelectorMap();
-
   formLocations: FormGroup;
   id: number;
   operacion: string = 'Agregar';
+
+  title = 'SelectorMap';
+  map: Leaflet.Map | undefined;
+  marker: Leaflet.Marker | undefined;
+  options = {
+    layers: [
+      Leaflet.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '...' })
+    ],
+    zoom: 15,
+    center: Leaflet.latLng(6.247980096310698, -75.57650510205677)
+  };
 
   constructor(private fb: FormBuilder, 
     private _locationService: LocationService,
@@ -39,6 +48,41 @@ export class EditLocationsComponent implements OnInit {
     this.id =Number(aRouter.snapshot.paramMap.get('id'));
 
   }
+
+  guardarCoordenadas() {
+    if (this.marker) {
+        const latLng = this.marker.getLatLng();
+        const lat = latLng.lat;
+        const lng = latLng.lng;
+
+        // Actualizar los valores en el formulario
+        this.formLocations.patchValue({
+            latitude: lat,
+            longitude: lng
+        });
+
+    }
+}
+  
+  onMapReady(map: Leaflet.Map) {
+    this.map = map;
+    this.map.on('click', this.onMapClick.bind(this));
+  }
+
+  onMapClick(event: Leaflet.LeafletMouseEvent) {
+    const lat = event.latlng.lat;
+    const lng = event.latlng.lng;
+    console.log('Coordenadas:', lat, lng);
+
+    // Agregar un marcador en la posición donde se hizo click
+    if (this.map) {
+      if (this.marker) {
+        this.map.removeLayer(this.marker);
+      }
+      this.marker = Leaflet.marker([lat, lng]).addTo(this.map);
+    }
+  }
+
   ngOnInit(): void {
 
     if (this.id != 0) {
@@ -92,40 +136,4 @@ export class EditLocationsComponent implements OnInit {
     }
 
   }
-}
-
-export class SelectorMap{
-  title = 'SelectorMap';
-  map: Leaflet.Map | undefined;
-  marker: Leaflet.Marker | undefined;
-  options = {
-    layers: [
-      Leaflet.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '...' })
-    ],
-    zoom: 15,
-    center: Leaflet.latLng(6.247980096310698, -75.57650510205677)
-  };
-  
-
-  constructor(){}
-  onMapReady(map: Leaflet.Map) {
-    this.map = map;
-    this.map.on('click', this.onMapClick.bind(this));
-  }
-
-  onMapClick(event: Leaflet.LeafletMouseEvent) {
-    const lat = event.latlng.lat;
-    const lng = event.latlng.lng;
-    console.log('Coordenadas:', lat, lng);
-
-    // Agregar un marcador en la posición donde se hizo click
-    if (this.map) {
-      if (this.marker) {
-        this.map.removeLayer(this.marker);
-      }
-      this.marker = Leaflet.marker([lat, lng]).addTo(this.map);
-    }
-  }
-
-  
 }

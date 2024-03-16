@@ -42,13 +42,13 @@
                             <div class="modal-body">
                                 <div style="height: 300px;"
                                     leaflet 
-                                    [leafletOptions]="selectorMap.options"
-                                    (leafletMapReady)="selectorMap.onMapReady($event)">
+                                    [leafletOptions]="options"
+                                    (leafletMapReady)="onMapReady($event)">
                                 </div>
                             </div>                            
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                              <button type="button" class="btn btn-primary">Guardar</button>
+                              <button type="button" class="btn btn-primary" (click)="guardarCoordenadas()">Cargar</button>
                             </div>
                           </div>
                         </div>
