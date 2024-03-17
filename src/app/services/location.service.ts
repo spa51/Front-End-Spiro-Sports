@@ -1,4 +1,3 @@
-import { updateLocation } from './../../../../Back-End/src/controllers/location';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
