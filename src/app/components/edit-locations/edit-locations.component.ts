@@ -100,7 +100,7 @@ export class EditLocationsComponent implements OnInit {
         name: data.name,
         description: data.description,
         address: data.address,
-        category: data.category,
+        category: data.categoryDetails,
         latitude: data.latitude,
         longitude: data.longitude,
       })
@@ -112,7 +112,7 @@ export class EditLocationsComponent implements OnInit {
       name: this.formLocations.value.name,
       description: this.formLocations.value.description,
       address: this.formLocations.value.address,
-      category: this.formLocations.value.category,
+      categoryDetails: this.formLocations.value.category,
       latitude: this.formLocations.value.latitude,
       longitude: this.formLocations.value.longitude,
       
