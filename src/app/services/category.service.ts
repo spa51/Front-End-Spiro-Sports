@@ -35,4 +35,9 @@ export class CategoryService {
   updateCategory(id:number, category:Category): Observable<void>{
     return this.http.put<void>(`${this.myAppUrl}${this.myApiUrl}${id}`,category)
   }
+
+  getListCategories(): Observable<Category[]> {
+    return this.http.get<Category[]>(`${this.myAppUrl}${this.myApiUrl}`);
+  }
+  
 }

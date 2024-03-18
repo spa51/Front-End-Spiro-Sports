@@ -12,10 +12,13 @@
                     <span *ngIf="formLocations.get('description')?.hasError('required') && formLocations.get('description')?.touched">
                         <strong>Requerido</strong>
                     </span>
-                    <input formControlName="category" type="text" class="form-control mt-2" placeholder="Ingrese Categoria">
-                    <span *ngIf="formLocations.get('category')?.hasError('required') && formLocations.get('category')?.touched">
+                    <select formControlName="category" class="form-control mt-2" placeholder="Ingrese categoria">
+                        <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+                      </select>
+                      <span *ngIf="formLocations.get('category')?.hasError('required') && formLocations.get('category')?.touched">
                         <strong>Requerido</strong>
-                    </span>
+                      </span>
+                      
                     <input formControlName="address" type="text" class="form-control mt-2" placeholder="Ingrese Direccion">
                     <span *ngIf="formLocations.get('address')?.hasError('required') && formLocations.get('address')?.touched">
                         <strong>Requerido</strong>

@@ -1,6 +1,6 @@
 import { Location } from './../../interfaces/location';
 import { getLocation } from './../../../../../Back-End/src/controllers/location';
-import { NgIf } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
@@ -8,13 +8,15 @@ import { LocationService } from '../../services/location.service';
 import { ToastrService } from 'ngx-toastr';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import * as  Leaflet from 'leaflet';
+import { CategoryService } from '../../services/category.service';
+import { Category } from '../../interfaces/category';
 
 @Component({
     selector: 'app-edit-locations',
     standalone: true,
     templateUrl: './edit-locations.component.html',
     styleUrl: './edit-locations.component.css',
-    imports: [RouterLink, ReactiveFormsModule, NgIf,LeafletModule]
+    imports: [RouterLink, ReactiveFormsModule, NgIf,LeafletModule, NgFor]
 })
 export class EditLocationsComponent implements OnInit {
   formLocations: FormGroup;
@@ -34,6 +36,7 @@ export class EditLocationsComponent implements OnInit {
 
   constructor(private fb: FormBuilder, 
     private _locationService: LocationService,
+    private _categoryService: CategoryService,
     private router:Router,
     private toastr: ToastrService,
     private aRouter: ActivatedRoute){
@@ -82,7 +85,7 @@ export class EditLocationsComponent implements OnInit {
       this.marker = Leaflet.marker([lat, lng]).addTo(this.map);
     }
   }
-
+  categories: Category[] = [];
   ngOnInit(): void {
 
     if (this.id != 0) {
@@ -90,7 +93,12 @@ export class EditLocationsComponent implements OnInit {
       this.operacion = 'Editar';
       this.getLocation(this.id);
     }
-    
+    this.getCategories();
+  }
+  getCategories() {
+    this._categoryService.getListCategories().subscribe((categories: Category[]) => {
+      this.categories = categories; // Asigna la lista de categorías al arreglo del componente
+    });
   }
 
   getLocation(id: number){
@@ -100,19 +108,20 @@ export class EditLocationsComponent implements OnInit {
         name: data.name,
         description: data.description,
         address: data.address,
-        category: data.categoryDetails,
+        category: data.category,
         latitude: data.latitude,
         longitude: data.longitude,
       })
     })
   }
+  
 
   editLocation(){
     const location: Location = {
       name: this.formLocations.value.name,
       description: this.formLocations.value.description,
       address: this.formLocations.value.address,
-      categoryDetails: this.formLocations.value.category,
+      category: this.formLocations.value.category,
       latitude: this.formLocations.value.latitude,
       longitude: this.formLocations.value.longitude,
       
