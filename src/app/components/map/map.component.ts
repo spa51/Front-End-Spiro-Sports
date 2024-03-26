@@ -27,12 +27,19 @@ export class MapComponent {
   }
 
   ngOnInit():void{
-    this.locationService.getListLocations().subscribe(locations =>{
+    const customIcon = Leaflet.icon({
+      iconUrl: '/assets/icons/markers/marker-00.svg', // Reemplaza 'URL_DE_TU_ICONO' con la URL de tu icono personalizado
+      iconSize: [41, 31], // Tamaño de tu icono
+      iconAnchor: [15, 38], // Punto de anclaje de tu icono
+    });
+    this.locationService.getListLocations().subscribe(locations => {
       locations.forEach(location => {
-        this.layers.push(Leaflet.marker([location.latitude, location.longitude])
-        .bindPopup(`<b>${location.name}</b><br>${location.description}`))
-      })
-    })
-  }
-
-}
+        // Use the custom icon when creating markers
+        this.layers.push(
+          Leaflet.marker([location.latitude, location.longitude], { icon: customIcon })
+            .bindPopup(`<b>${location.name}</b><br>${location.description}`)
+            );
+          });
+        });
+      }
+    }

@@ -22,7 +22,6 @@ export class EditLocationsComponent implements OnInit {
   formLocations: FormGroup;
   id: number;
   operacion: string = 'Agregar';
-
   title = 'SelectorMap';
   map: Leaflet.Map | undefined;
   marker: Leaflet.Marker | undefined;
@@ -76,13 +75,18 @@ export class EditLocationsComponent implements OnInit {
     const lat = event.latlng.lat;
     const lng = event.latlng.lng;
     console.log('Coordenadas:', lat, lng);
+    const customIcon = Leaflet.icon({
+      iconUrl: '/assets/icons/markers/marker-01.svg', // Reemplaza 'URL_DE_TU_ICONO' con la URL de tu icono personalizado
+      iconSize: [41, 31], // Tamaño de tu icono
+      iconAnchor: [15, 38], // Punto de anclaje de tu icono
+    });
 
     // Agregar un marcador en la posición donde se hizo click
     if (this.map) {
       if (this.marker) {
         this.map.removeLayer(this.marker);
       }
-      this.marker = Leaflet.marker([lat, lng]).addTo(this.map);
+      this.marker = Leaflet.marker([lat, lng],{icon:customIcon}).addTo(this.map);
     }
   }
   categories: Category[] = [];
