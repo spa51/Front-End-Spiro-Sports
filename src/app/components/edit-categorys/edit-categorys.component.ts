@@ -73,5 +73,18 @@ export class EditCategorysComponent implements OnInit {
       
     }
   }
+  onFileChange(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.formCategorys.patchValue({
+          iconFile: file,
+          iconUrl: `/assets/icons/markers/${file.name}` // Almacena la ruta del archivo en iconUrl
+        });
+      };
+    }
+  }
 
 }
