@@ -8,6 +8,14 @@
                     <span *ngIf="formCategorys.get('name')?.hasError('required') && formCategorys.get('name')?.touched ">
                         <strong>Requerido</strong>
                     </span>
+                    <input formControlName="Descripcion" type="text" class="form-control" placeholder="Ingrese Nombre">
+                    <span *ngIf="formCategorys.get('Descripcion')?.hasError('required') && formCategorys.get('Descripcion')?.touched ">
+                        <strong>Requerido</strong>
+                    </span>
+                    <input formControlName="iconUrl" type="text" class="form-control" placeholder="Ingrese Nombre">
+                    <span *ngIf="formCategorys.get('iconUrl')?.hasError('required') && formCategorys.get('iconUrl')?.touched ">
+                        <strong>Requerido</strong>
+                    </span>
                     <div class="row mt-2 text-center">
                         <div class="col-lg-6">
                             <button [disabled]="formCategorys.invalid" type="submit" class="btn btn-primary">Aceptar</button>

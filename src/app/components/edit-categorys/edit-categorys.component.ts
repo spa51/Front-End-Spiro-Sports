@@ -1,4 +1,3 @@
-import { getCategory } from './../../../../../Back-End/src/controllers/category';
 import { NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -26,6 +25,8 @@ export class EditCategorysComponent implements OnInit {
     private aRouter:ActivatedRoute){
       this.formCategorys = this.fb.group({
         name:['', Validators.required],
+        Descripcion:['', Validators.required],
+        iconUrl:['', Validators.required],
       })
       this.id =Number(aRouter.snapshot.paramMap.get('id'));
     }
@@ -43,6 +44,8 @@ export class EditCategorysComponent implements OnInit {
       console.log(data)
       this.formCategorys.setValue({
         name:data.name,
+        Descripcion:data.Descripcion,
+        iconUrl:data.iconUrl
       })
     })
   }
@@ -50,6 +53,8 @@ export class EditCategorysComponent implements OnInit {
   editCategory(){
     const category: Category ={
       name: this.formCategorys.value.name,
+      Descripcion: this.formCategorys.value.Descripcion,
+      iconUrl: this.formCategorys.value.iconUrl,
     }
     if (this.id !=0) {
       //editar
