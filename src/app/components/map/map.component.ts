@@ -24,6 +24,7 @@ export class MapComponent {
   };
 
   options = {
+    
     zoom: 15,
     center: Leaflet.latLng(6.247980096310698, -75.57650510205677)
   };
@@ -47,18 +48,30 @@ export class MapComponent {
     const googleSatelliteLayer = Leaflet.tileLayer('http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}', {
       attribution: 'Google Satellite'
     });
-    const googleHybridLayer = Leaflet.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
-      attribution: 'Google Hybrid'
+    const cartoPositron = Leaflet.tileLayer(' https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+      attribution: 'Carto Positron'
+    });
+    const AlidadeSmooth = Leaflet.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}@2x.png', {
+      attribution: ' Stadia Maps Alidade Smooth'
+    });
+    const AlidadeSmoothDark = Leaflet.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}@2x.png', {
+      attribution: ' Stadia Maps Alidade Smooth Dark'
+    });
+    const AlidadeSatellite = Leaflet.tileLayer(' https://tiles.stadiamaps.com/data/satellite/{z}/{x}/{y}.jpg', {
+      attribution: ' Stadia Maps Satellite'
     });
 
-    this.baseLayers = [openStreetMapLayer, googleMapsLayer, googleSatelliteLayer, googleHybridLayer];
+    this.baseLayers = [openStreetMapLayer, googleMapsLayer, googleSatelliteLayer,cartoPositron,AlidadeSmooth,AlidadeSmoothDark,AlidadeSatellite];
 
     this.layersControl = {
       baseLayers: {
-        'OpenStreetMap': openStreetMapLayer,
         'Google Maps': googleMapsLayer,
         'Google Satellite': googleSatelliteLayer,
-        'Google Hybrid': googleHybridLayer
+        'Carto Positron': cartoPositron,
+        'Stadia Maps White': AlidadeSmooth,
+        'Stadia Maps Dark': AlidadeSmoothDark,
+        'Stadia Maps Satellite': AlidadeSatellite,
+        'OpenStreetMap': openStreetMapLayer
         
       },
       overlays: {} // Inicialmente vacío, lo llenaremos dinámicamente
@@ -87,7 +100,7 @@ export class MapComponent {
   }
 
   onMapReady(map: Leaflet.Map): void {
-    this.map = map;
+    this.map = map; 
   }
 
   async getCustomIcon(category: Category): Promise<Leaflet.Icon> {

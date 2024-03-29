@@ -1,5 +1,55 @@
 .title {
     margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
 }
+
+.btn-primary{
+  align-items: center;
+}
+.logo{
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+.body{
+  margin: 20px;
+  max-height: 380px; /* Altura máxima de la tabla */
+  overflow-y: auto; 
+}
+/* Mejoras generales para la tabla */
+.table {
+  width: 100%; /* Asegura que la tabla use todo el ancho disponible */
+  border-collapse: collapse; /* Elimina el espacio entre bordes de celdas */
+  box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Sutil sombra alrededor de la tabla para darle profundidad */
+  margin: 20px 0; /* Margen superior e inferior para la tabla */
+}
+
+.table th, .table td {
+  padding: 8px; /* Añade relleno dentro de las celdas para más espacio */
+  border: 1px solid #ddd; /* Línea sutil entre celdas */
+  text-align: left; /* Alineación del texto */
+}
+
+.table thead {
+  background-color: #f8f9fa; /* Fondo ligeramente gris para diferenciar la cabecera */
+}
+
+.btn-image, .btn-image-delete {
+    background-image: url('/assets/icons/pen.png'); /* Ajusta la ruta de la imagen */
+    border: none; /* Remueve el borde del botón */
+    color: transparent; /* Hace el texto transparente para que no se vea, si es que hay texto */
+    background-size: cover; /* Asegura que la imagen cubra todo el botón */
+    width: 25px; /* Ancho del botón, ajusta según necesidad */
+    height: 25px; /* Altura del botón, ajusta según necesidad */
+  }
+
+  .btn-image {
+    background-image: url('/assets/icons/pen.png'); /* Ajusta esta ruta */
+  }
+  
+  .btn-image-delete {
+    background-image: url('/assets/icons/bin.png'); /* Ajusta esta ruta */
+  }
+
+  .btn-image, .btn-image-delete {
+    cursor: pointer;
+  }
