@@ -1,34 +1,35 @@
-<div class="row mt-1">
-    <div class="col-lg-4 offset-lg-4">
-        <div class="card text-white bg-secondary mb-3" style="max-width: 25rem;">
-            <h5 class="card-header text-center ">{{ operacion }} Localizacion</h5>
-            <div class="card-body ">
-                <form [formGroup]="formCategorys" (ngSubmit)="editCategory()">
-                    <input formControlName="name" type="text" class="form-control" placeholder="Ingrese Nombre">
-                    <span *ngIf="formCategorys.get('name')?.hasError('required') && formCategorys.get('name')?.touched ">
-                        <strong>Requerido</strong>
-                    </span>
-                    <input formControlName="Descripcion" type="text" class="form-control" placeholder="Ingrese Nombre">
-                    <span *ngIf="formCategorys.get('Descripcion')?.hasError('required') && formCategorys.get('Descripcion')?.touched ">
-                        <strong>Requerido</strong>
-                    </span>
-                    <div class="mb-3">
-                        <label for="iconFile" class="form-label">Seleccionar Icono</label>
-                        <input class="form-control" type="file" id="iconFile" (change)="onFileChange($event)">
-                      </div>
-                      
-                    <div class="row mt-2 text-center">
-                        <div class="col-lg-6">
-                            <button [disabled]="formCategorys.invalid" type="submit" class="btn btn-primary">Aceptar</button>
-                        </div>
-                        <div class="col-lg-6">
-                            <button routerLink="/listscate" type="button" class="btn btn-secondary">Cancelar</button>
-                        </div>
-                    </div>
-                </form>
+<div class="wrapper">
+    <div class="body">
+        <img class="logo" src="/assets/icons/list.png" alt="img login">
+        <h3>{{ operacion }} Categoria</h3>
+        <form [formGroup]="formCategorys" (ngSubmit)="editCategory()">
+            <div class="form-floating mb-2 mt-2">
+                <input formControlName="name" type="text" class="form-control" placeholder="Ingrese Nombre" [ngClass]="{'is-invalid': formCategorys.get('name')?.errors?.['required'] && formCategorys.get('name')?.touched}">
+                <label>Nombre</label>
+                <div *ngIf="formCategorys.get('name')?.errors?.['required'] && formCategorys.get('name')?.touched" class="invalid-feedback">
+                </div>
             </div>
-          </div>
+            
+            <div class="form-floating mb-2 mt-2">
+                <input formControlName="Descripcion" type="text" class="form-control" placeholder="Ingrese Nombre"  [ngClass]="{'is-invalid': formCategorys.get('Descripcion')?.errors?.['required'] && formCategorys.get('Descripcion')?.touched}">
+                <label>Descripcion</label>
+                <div *ngIf="formCategorys.get('Descripcion')?.errors?.['required'] && formCategorys.get('Descripcion')?.touched" class="invalid-feedback">
+                </div>
+            </div>
+            <div class="form-floating mb-2 mt-2">
+                <div class="mb-3">
+                    <label for="iconFile" class="form-label">Seleccionar Icono</label>
+                    <input class="form-control" type="file" id="iconFile" (change)="onFileChange($event)">
+                  </div>
+            </div>
+            <div class="row mt-2 text-center">
+                <div class="col-lg-6">
+                    <button [disabled]="formCategorys.invalid" type="submit" class="btn btn-primary">Aceptar</button>
+                </div>
+                <div class="col-lg-6">
+                    <button routerLink="/listscate" type="button" class="btn btn-secondary">Cancelar</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
-
-

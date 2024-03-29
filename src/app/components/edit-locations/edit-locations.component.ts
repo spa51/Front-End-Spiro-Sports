@@ -1,6 +1,6 @@
 import { Location } from './../../interfaces/location';
 import { getLocation } from './../../../../../Back-End/src/controllers/location';
-import { NgFor, NgIf } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
@@ -16,7 +16,7 @@ import { Category } from '../../interfaces/category';
     standalone: true,
     templateUrl: './edit-locations.component.html',
     styleUrl: './edit-locations.component.css',
-    imports: [RouterLink, ReactiveFormsModule, NgIf,LeafletModule, NgFor]
+    imports: [RouterLink, ReactiveFormsModule, NgIf,LeafletModule, NgFor, NgClass]
 })
 export class EditLocationsComponent implements OnInit {
   formLocations: FormGroup;

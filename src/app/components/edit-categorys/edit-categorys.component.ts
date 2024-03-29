@@ -1,4 +1,4 @@
-import { NgIf } from '@angular/common';
+import { NgClass, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
@@ -9,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-edit-categorys',
   standalone: true,
-  imports: [RouterLink,NgIf,ReactiveFormsModule],
+  imports: [RouterLink,NgIf,ReactiveFormsModule,NgClass],
   templateUrl: './edit-categorys.component.html',
   styleUrl: './edit-categorys.component.css'
 })
