@@ -61,7 +61,7 @@ export class MapComponent {
       attribution: ' Stadia Maps Satellite'
     });
 
-    this.baseLayers = [openStreetMapLayer, googleMapsLayer, googleSatelliteLayer,cartoPositron,AlidadeSmooth,AlidadeSmoothDark,AlidadeSatellite];
+    this.baseLayers = [openStreetMapLayer];
 
     this.layersControl = {
       baseLayers: {
