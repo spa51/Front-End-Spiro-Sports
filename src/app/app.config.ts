@@ -1,11 +1,12 @@
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { ApplicationConfig } from '@angular/core';
 import { provideRouter } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { importProvidersFrom } from '@angular/core';
 
 import { routes } from './app.routes';
 import { provideToastr } from 'ngx-toastr';
+import { addTokeInterceptor } from './utils/add-toke.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes), 
@@ -16,5 +17,7 @@ export const appConfig: ApplicationConfig = {
       preventDuplicates: true,
     }),
     provideAnimations(),
+    {provide: HTTP_INTERCEPTORS,  useClass: addTokeInterceptor, multi:true}
   ]
+  
 };

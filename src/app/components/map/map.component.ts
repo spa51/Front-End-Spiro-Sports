@@ -59,6 +59,7 @@ export class MapComponent {
         'Google Maps': googleMapsLayer,
         'Google Satellite': googleSatelliteLayer,
         'Google Hybrid': googleHybridLayer
+        
       },
       overlays: {} // Inicialmente vacío, lo llenaremos dinámicamente
     };
@@ -76,6 +77,7 @@ export class MapComponent {
             if (!this.overlays[category.name]) {
               this.overlays[category.name] = new Leaflet.LayerGroup();
               this.layersControl.overlays[category.name] = this.overlays[category.name];
+              this.overlays[category.name].addTo(this.map); 
             }
             marker.addTo(this.overlays[category.name]);
           });

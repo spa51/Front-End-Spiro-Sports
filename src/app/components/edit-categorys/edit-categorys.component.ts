@@ -41,7 +41,7 @@ export class EditCategorysComponent implements OnInit {
 
   getCategory(id: number){
     this._categoryService.getCategory(id).subscribe((data:Category)=>{
-      console.log(data)
+      // console.log(data)
       this.formCategorys.setValue({
         name:data.name,
         Descripcion:data.Descripcion,
@@ -68,7 +68,7 @@ export class EditCategorysComponent implements OnInit {
       //Añadir
       this._categoryService.saveCategory(category).subscribe(()=>{
         this.toastr.success(`La Categoria ${category.name} Fue Agregada`,'Guardado')
-        this.router.navigate(['listscate'])
+        this.router.navigate(['/listscate'])
       })
       
     }

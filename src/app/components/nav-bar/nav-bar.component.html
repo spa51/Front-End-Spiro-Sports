@@ -1,9 +1,10 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" routerLink="/maps">
         <img src="/assets/icons/Logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
         Erizo Sonic
       </a>
+
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
@@ -20,5 +21,8 @@
           </li>
         </ul>
       </div>
+
+      <button class="btn btn-outline-success" type="button" (click)="logOut()"><i class="fa fa-user"></i></button>
+      
     </div>
   </nav>

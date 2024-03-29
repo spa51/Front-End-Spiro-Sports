@@ -74,7 +74,7 @@ export class EditLocationsComponent implements OnInit {
   onMapClick(event: Leaflet.LeafletMouseEvent) {
     const lat = event.latlng.lat;
     const lng = event.latlng.lng;
-    console.log('Coordenadas:', lat, lng);
+    // console.log('Coordenadas:', lat, lng);
     const customIcon = Leaflet.icon({
       iconUrl: '/assets/icons/markers/marker-01.svg', // Reemplaza 'URL_DE_TU_ICONO' con la URL de tu icono personalizado
       iconSize: [41, 31], // Tamaño de tu icono

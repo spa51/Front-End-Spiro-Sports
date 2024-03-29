@@ -4,29 +4,41 @@ import { ListLocationsComponent } from './components/list-locations/list-locatio
 import { EditLocationsComponent } from './components/edit-locations/edit-locations.component';
 import { ListCategoryComponent } from './components/list-category/list-category.component';
 import { EditCategorysComponent } from './components/edit-categorys/edit-categorys.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { authGuard } from './utils/auth.guard';
 
 export const routes: Routes = [
     {
-        path: 'lists', component: ListLocationsComponent
+        path: '', redirectTo: 'maps', pathMatch: 'full'
     },
     {
-        path: 'listscate', component: ListCategoryComponent
+        path: 'login', component: LoginComponent
+    },
+    {
+        path: 'signIn', component: SignInComponent
+    },
+    {
+        path: 'lists', component: ListLocationsComponent, canActivate:[authGuard]
+    },
+    {
+        path: 'listscate', component: ListCategoryComponent, canActivate:[authGuard] 
     },
     {
         path: 'maps', component: MapComponent
     },
     {
-        path: 'edit', component: EditLocationsComponent
+        path: 'edit', component: EditLocationsComponent, canActivate:[authGuard]
     },
     {
-        path: 'edit/:id', component: EditLocationsComponent
+        path: 'edit/:id', component: EditLocationsComponent, canActivate:[authGuard]
     },
     {
-        path: 'editca', component: EditCategorysComponent
+        path: 'editca', component: EditCategorysComponent, canActivate:[authGuard]
     },
     {
-        path: 'editca/:id', component: EditCategorysComponent
+        path: 'editca/:id', component: EditCategorysComponent, canActivate:[authGuard]
     },
-    { path: '**', redirectTo: '', pathMatch: 'full' },
+    { path: '**', redirectTo: 'maps', pathMatch: 'full' },
 
 ];

@@ -27,7 +27,6 @@ export class ListLocationsComponent implements OnInit{
   getListLocations(){
     this._locationService.getListLocations().subscribe((data: Location[]) => {
       this.listLocations = data;
-      console.log(data); 
     })
   }
 
