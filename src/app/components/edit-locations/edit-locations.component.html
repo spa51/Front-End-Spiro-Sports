@@ -32,22 +32,25 @@
                 <div *ngIf="formLocations.get('address')?.errors?.['required'] && formLocations.get('address')?.touched" class="invalid-feedback">
                 </div>
             </div>
-            <div class="form-floating mb-2 mt-2">
-                <input formControlName="latitude" type="number" class="form-control mt-2" placeholder="Ingrese Cordenadas 1" [ngClass]="{'is-invalid': formLocations.get('latitude')?.errors?.['required'] && formLocations.get('latitude')?.touched}">
-                <label for="floatingInput">Latitud</label>
-                <div *ngIf="formLocations.get('latitude')?.errors?.['required'] && formLocations.get('latitude')?.touched" class="invalid-feedback">
+            <div class="input-group">
+                <div class="form-floating mb-2 ">
+                    <input formControlName="latitude" type="number" class="form-control mt-2" placeholder="Ingrese Cordenadas 1" [ngClass]="{'is-invalid': formLocations.get('latitude')?.errors?.['required'] && formLocations.get('latitude')?.touched}" readonly>
+                    <label for="floatingInput">Latitud</label>
+                    <div *ngIf="formLocations.get('latitude')?.errors?.['required'] && formLocations.get('latitude')?.touched" class="invalid-feedback">
+                    </div>
                 </div>
+                <div class="form-floating mb-2">
+                    <input formControlName="longitude" type="number" class="form-control mt-2" placeholder="Ingrese Cordenadas 2" [ngClass]="{'is-invalid': formLocations.get('longitude')?.errors?.['required'] && formLocations.get('longitude')?.touched}" readonly>
+                    <label for="floatingInput">Logitud</label>
+                    <div *ngIf="formLocations.get('longitude')?.errors?.['required'] && formLocations.get('longitude')?.touched" class="invalid-feedback">
+                    </div>
+                    </div>
+                    <button type="button" class="btn btn-warning mb-2 mt-2" data-bs-toggle="modal" data-bs-target="#mapModal">
+                        <i class="fa fa-map"></i>
+                    </button>
             </div>
-            <div class="form-floating mb-2 mt-2">
-                
-            <input formControlName="longitude" type="number" class="form-control mt-2" placeholder="Ingrese Cordenadas 2" [ngClass]="{'is-invalid': formLocations.get('longitude')?.errors?.['required'] && formLocations.get('longitude')?.touched}">
-            <label for="floatingInput">Logitud</label>
-            <div *ngIf="formLocations.get('longitude')?.errors?.['required'] && formLocations.get('longitude')?.touched" class="invalid-feedback">
-            </div>
-            </div>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mapModal">
-                <i class="fa fa-map"></i>
-            </button>
+
+
 
             <div class="modal fade" id="mapModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -65,7 +68,7 @@
                     </div>                            
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary" (click)="guardarCoordenadas()">Cargar</button>
+                      <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="guardarCoordenadas()">Cargar</button>
                     </div>
                   </div>
                 </div>
