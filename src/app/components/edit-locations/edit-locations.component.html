@@ -45,7 +45,7 @@
                     <div *ngIf="formLocations.get('longitude')?.errors?.['required'] && formLocations.get('longitude')?.touched" class="invalid-feedback">
                     </div>
                     </div>
-                    <button type="button" class="btn btn-warning mb-2 mt-2" data-bs-toggle="modal" data-bs-target="#mapModal">
+                    <button type="button" class="btn btn-custom-color mb-2 mt-2" data-bs-toggle="modal" data-bs-target="#mapModal">
                         <i class="fa fa-map"></i>
                     </button>
             </div>
@@ -67,18 +67,18 @@
                         </div>
                     </div>                            
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="guardarCoordenadas()">Cargar</button>
+                      <button type="button" class="btn btn-custom-color-back" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-custom-color-go" data-bs-dismiss="modal" (click)="guardarCoordenadas()">Cargar</button>
                     </div>
                   </div>
                 </div>
               </div>
             <div class="row mt-2 text-center">
                 <div class="col-lg-6">
-                    <button [disabled]="formLocations.invalid" type="submit" class="btn btn-primary">Aceptar</button>
+                    <button [disabled]="formLocations.invalid" type="submit" class="btn btn-custom-color-go">Aceptar</button>
                 </div>
                 <div class="col-lg-6">
-                    <button routerLink="/lists" type="button" class="btn btn-secondary">Cancelar</button>
+                    <button routerLink="/lists" type="button" class="btn btn-custom-color-back">Cancelar</button>
                 </div>
             </div>
         </form>

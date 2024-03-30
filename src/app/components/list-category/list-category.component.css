@@ -10,6 +10,11 @@
   margin-bottom: 10px;
 }
 
+.custom-button-color{
+  background-color: #D9436B;
+  color: #F2E9D8;
+}
+
 .body{
   margin: 20px;
   max-height: 380px; /* Altura máxima de la tabla */
@@ -25,7 +30,7 @@
 
 .table th, .table td {
   padding: 8px; /* Añade relleno dentro de las celdas para más espacio */
-  border: 1px solid #ddd; /* Línea sutil entre celdas */
+  border: 1px solid #F2E9D8; /* Línea sutil entre celdas */
   text-align: left; /* Alineación del texto */
 }
 
