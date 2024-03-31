@@ -6,7 +6,7 @@
   align-items: center;
 }
 .logo{
-  height: 80px;
+  height: 100px;
   margin-bottom: 10px;
 }
 
@@ -38,8 +38,7 @@
   background-color: #f8f9fa; /* Fondo ligeramente gris para diferenciar la cabecera */
 }
 
-.btn-image, .btn-image-delete {
-    background-image: url('/assets/icons/pen.png'); /* Ajusta la ruta de la imagen */
+.btn-image, .btn-image-delete { /* Ajusta la ruta de la imagen */
     border: none; /* Remueve el borde del botón */
     color: transparent; /* Hace el texto transparente para que no se vea, si es que hay texto */
     background-size: cover; /* Asegura que la imagen cubra todo el botón */
@@ -48,11 +47,11 @@
   }
 
   .btn-image {
-    background-image: url('/assets/icons/pen.png'); /* Ajusta esta ruta */
+    background-image: url('/assets/icons/buttons/pen (3).png'); /* Ajusta esta ruta */
   }
   
   .btn-image-delete {
-    background-image: url('/assets/icons/bin.png'); /* Ajusta esta ruta */
+    background-image: url('/assets/icons/buttons/bin (1).png'); /* Ajusta esta ruta */
   }
 
   .btn-image, .btn-image-delete {

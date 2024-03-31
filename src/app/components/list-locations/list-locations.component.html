@@ -1,5 +1,5 @@
 <div class="title text-center">
-  <img class="logo" src="/assets/icons/map.png" alt="img login">
+  <img class="logo" src="/assets/icons/logoerizo.png" alt="img login">
     <h3>Localizaciones</h3>
     <button type="button" class="btn custom-button-color" routerLink="/edit">Agregar Ubicacion</button>
 </div>
@@ -28,7 +28,7 @@
         <td>{{item.longitude}}</td>
         <td>
             <button routerLink="/edit/{{ item.id }}" type="button" class="btn btn-image btn-sm ms-2"></button>
-            <button (click)="deleteLocation(item.id!)" type="button" class="btn btn-image-delete btn-sm ms-2"></button>
+            <button (click)="deleteLocation(item.id!)" type="button" class="btn btn-image-delete btn-sm ms-2"> <i class="fan fa-trash-can"></i> </button>
         </td>
       </tr>
     </tbody>
