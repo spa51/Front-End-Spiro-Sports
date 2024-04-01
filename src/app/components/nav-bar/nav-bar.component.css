@@ -3,10 +3,12 @@
     background-color: #F2E9D8; /* Nuevo color de fondo */
   }
 
-.custom-button-color{
+.custom-button-logged-out{
     color: #734432
 }
-
+.custom-button-logged-in{
+    background-color: #D9436B;
+}
 .nav-link{
     color: #734432
 }
