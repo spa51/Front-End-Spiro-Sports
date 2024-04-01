@@ -28,10 +28,10 @@ export const routes: Routes = [
         path: 'maps', component: MapComponent
     },
     {
-        path: 'edit', component: EditLocationsComponent, canActivate:[authGuard],data: { roles: ['admin'] }
+        path: 'edit', component: EditLocationsComponent, canActivate:[authGuard],data: { roles: ['admin', 'user'] }
     },
     {
-        path: 'edit/:id', component: EditLocationsComponent, canActivate:[authGuard],data: { roles: ['admin'] }
+        path: 'edit/:id', component: EditLocationsComponent, canActivate:[authGuard],data: { roles: ['admin', 'user'] }
     },
     {
         path: 'editca', component: EditCategorysComponent, canActivate:[authGuard],data: { roles: ['admin'] }

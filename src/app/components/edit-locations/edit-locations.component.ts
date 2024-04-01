@@ -144,7 +144,7 @@ export class EditLocationsComponent implements OnInit {
       this._locationService.saveLocation(location).subscribe(()=>{
         // console.log('Localizacion Agregada')
         this.toastr.success(`La localizacion ${location.name} fue agregada`,'Guardado!')
-        this.router.navigate(['/lists'])
+        this.router.navigate(['/maps'])
       })
     }
 

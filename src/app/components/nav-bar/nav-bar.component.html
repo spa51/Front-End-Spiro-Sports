@@ -14,6 +14,11 @@
           </li>
         </ul>
       </div>
+      
+      <button class=" btn custom-button-pin" 
+      type="button" [ngClass]="isLoggedIn ? 'visible' : 'invisible'" routerLink="/edit">
+      <i class="fa fa-map-pin"></i>
+    </button>
 
       <button class="btn" 
         [ngClass]="isLoggedIn ? 'custom-button-logged-in' : 'custom-button-logged-out'" 

@@ -19,7 +19,7 @@
         <th>{{item.id}}</th>
         <th>{{item.name}}</th>
         <th>{{item.Descripcion}}</th>
-        <th>{{item.iconUrl}}</th>
+        <th><img src="{{item.iconUrl}}" alt="Icono de fútbol" style="width: 41px; height: 31px;"></th>
         <td>
             <button routerLink="/editca/{{ item.id }}" type="button" class="btn btn-image btn-sm ms-2"></button>
             <button (click)="deleteCategory(item.id!)" type="button" class="btn btn-image-delete btn-sm ms-2"></button>
