@@ -9,4 +9,5 @@ export interface Location {
     categoryDetails?: {
         name: string;
     };
+    userId?: number;
 }

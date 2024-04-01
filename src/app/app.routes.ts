@@ -19,7 +19,7 @@ export const routes: Routes = [
         path: 'signIn', component: SignInComponent
     },
     {
-        path: 'lists', component: ListLocationsComponent, canActivate:[authGuard],data: { roles: ['admin', 'user'] }
+        path: 'lists', component: ListLocationsComponent, canActivate:[authGuard],data: { roles: ['admin'] }
     },
     {
         path: 'listscate', component: ListCategoryComponent, canActivate:[authGuard] ,data: { roles: ['admin'] }
@@ -28,10 +28,10 @@ export const routes: Routes = [
         path: 'maps', component: MapComponent
     },
     {
-        path: 'edit', component: EditLocationsComponent, canActivate:[authGuard],data: { roles: ['admin', 'user'] }
+        path: 'edit', component: EditLocationsComponent, canActivate:[authGuard],data: { roles: ['admin'] }
     },
     {
-        path: 'edit/:id', component: EditLocationsComponent, canActivate:[authGuard],data: { roles: ['admin', 'user'] }
+        path: 'edit/:id', component: EditLocationsComponent, canActivate:[authGuard],data: { roles: ['admin'] }
     },
     {
         path: 'editca', component: EditCategorysComponent, canActivate:[authGuard],data: { roles: ['admin'] }

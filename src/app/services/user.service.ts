@@ -26,7 +26,7 @@ export class UserService {
     return this.http.post<LoginResponse>(`${this.myAppUrl}${this.myApiUrl}login`, user).pipe(
       tap(response => {
         const token = response.token;
-        console.log('Token from server:', token);
+        // console.log('Token from server:', token);
         if (!token) {
           throw new Error('Token not found in server response');
         }

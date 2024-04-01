@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit{
       next: (token) =>{
         this.router.navigate(['/maps'])
         localStorage.setItem('token',token)
-        console.log(token)
+        // console.log(token)
       },
       error: (e: HttpErrorResponse) =>{
         this._errorService.msjError(e); 
