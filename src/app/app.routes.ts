@@ -19,25 +19,25 @@ export const routes: Routes = [
         path: 'signIn', component: SignInComponent
     },
     {
-        path: 'lists', component: ListLocationsComponent, canActivate:[authGuard]
+        path: 'lists', component: ListLocationsComponent, canActivate:[authGuard],data: { roles: ['admin', 'user'] }
     },
     {
-        path: 'listscate', component: ListCategoryComponent, canActivate:[authGuard] 
+        path: 'listscate', component: ListCategoryComponent, canActivate:[authGuard] ,data: { roles: ['admin'] }
     },
     {
         path: 'maps', component: MapComponent
     },
     {
-        path: 'edit', component: EditLocationsComponent, canActivate:[authGuard]
+        path: 'edit', component: EditLocationsComponent, canActivate:[authGuard],data: { roles: ['admin', 'user'] }
     },
     {
-        path: 'edit/:id', component: EditLocationsComponent, canActivate:[authGuard]
+        path: 'edit/:id', component: EditLocationsComponent, canActivate:[authGuard],data: { roles: ['admin', 'user'] }
     },
     {
-        path: 'editca', component: EditCategorysComponent, canActivate:[authGuard]
+        path: 'editca', component: EditCategorysComponent, canActivate:[authGuard],data: { roles: ['admin'] }
     },
     {
-        path: 'editca/:id', component: EditCategorysComponent, canActivate:[authGuard]
+        path: 'editca/:id', component: EditCategorysComponent, canActivate:[authGuard],data: { roles: ['admin'] }
     },
     { path: '**', redirectTo: 'maps', pathMatch: 'full' },
 
