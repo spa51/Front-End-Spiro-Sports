@@ -115,9 +115,28 @@ export class EditLocationsComponent implements OnInit {
         category: data.category,
         latitude: data.latitude,
         longitude: data.longitude,
-      })
-    })
-  }
+      });
+    // Crear un objeto LeafletMouseEvent con todas las propiedades necesarias
+    const leafletMouseEvent: Leaflet.LeafletMouseEvent = {
+      latlng: Leaflet.latLng(data.latitude, data.longitude),
+      layerPoint: Leaflet.point(0, 0), // Puedes ajustar esto según tus necesidades
+      containerPoint: Leaflet.point(0, 0), // Puedes ajustar esto según tus necesidades
+      originalEvent: new MouseEvent('click'), // Puedes ajustar esto según tus necesidades
+      type: 'click', // Puedes ajustar esto según tus necesidades
+      popup: null,
+      target: null,
+      sourceTarget: null,
+      propagatedFrom: null,
+      layer: null,
+    };
+
+    // Llamar a onMapClick pasando el objeto creado
+    this.onMapClick(leafletMouseEvent);
+    if (this.map) {
+      this.map.setView(leafletMouseEvent.latlng,14);
+    }
+  });
+}
   
 
   editLocation(){
