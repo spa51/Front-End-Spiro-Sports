@@ -84,7 +84,7 @@ export class MapComponent {
         this.categoryService.getCategory(location.category).subscribe(category => {
           this.getCustomIcon(category).then(customIcon => {
             const marker = Leaflet.marker([location.latitude, location.longitude], { icon: customIcon })
-              .bindPopup(`<b>${location.name}</b><br>${location.description}`);
+              .bindPopup(`<b>${location.name}</b><br><sup> Categoria: ${location.categoryDetails?.name}</sup><br>${location.description}<br><p><b>Dirección: ${location.address}</b></p>`);
 
             // Agrupar marcadores por categoría
             if (!this.overlays[category.name]) {
