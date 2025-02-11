@@ -1,5 +1,5 @@
 import { Location } from './../../interfaces/location';
-import { getLocation } from './../../../../../Back-End/src/controllers/location';
+import { getLocation } from './../../../../../Back-End-Spiro-Sports/src/controllers/location';
 import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -30,7 +30,7 @@ export class EditLocationsComponent implements OnInit {
       Leaflet.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '...' })
     ],
     zoom: 15,
-    center: Leaflet.latLng(6.247980096310698, -75.57650510205677)
+    center: Leaflet.latLng(8.750475779198553, -75.8783136071223)
   };
 
   constructor(private fb: FormBuilder, 

@@ -25,8 +25,8 @@ export class MapComponent {
 
   options = {
     
-    zoom: 15,
-    center: Leaflet.latLng(6.247980096310698, -75.57650510205677)
+    zoom: 13,
+    center: Leaflet.latLng(8.750475779198553, -75.8783136071223)
   };
   
   constructor(private locationService: LocationService, private categoryService: CategoryService) { }
